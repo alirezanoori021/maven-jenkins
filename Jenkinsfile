@@ -10,6 +10,7 @@ pipeline {
       {
             steps 
             {
+              git remote prune https://github.com/alirezanoori021/maven-jenkins/
               sh "mvn clean package -DskipTests=true"
               archive 'target/*.jar' 
             }  
