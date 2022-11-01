@@ -4,7 +4,18 @@ pipeline {
         maven "M3"
    }
   // this is a dummy change
+
   stages {
+    stage('Sonarqube Analysis - SAST')  
+      { 
+        steps  
+        { 
+           withSonarQubeEnv('SonarQube')  
+           { 
+              sh "mvn sonar:sonar -Dsonar.projectKey=maven-jenkins-pipeline -Dsonar.host.url=http://35.242.132.146:9000"  
+           } 
+        } 
+      } 
       stage('Build Artifact') 
       {
             steps 
